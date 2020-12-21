@@ -1,5 +1,6 @@
 package com;
 
+import com.model.WordCountWithUnique;
 import com.util.StringUtil;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +35,9 @@ public class WordCount {
       }
     }
 
-    System.out.println("Number of words: " + StringUtil.countWordsWithRegex(input, excludedWords));
+    WordCountWithUnique result = StringUtil.countUniqueWordsWithRegex(input, excludedWords);
+
+    System.out.println("Number of words: " + result.getTotalCount() + ", unique: " + result.getUniqueCount());
   }
 
   private static List<String> readFile(final String fileName) {

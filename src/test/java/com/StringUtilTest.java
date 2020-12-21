@@ -35,4 +35,19 @@ public class StringUtilTest {
     assertEquals(3, StringUtil.countWordsWithRegex("X.Y!Z", excludedWords));
     assertEquals(0, StringUtil.countWordsWithRegex("the a on off", excludedWords));
   }
+
+  @Test
+  public void testCountUniqueWordsWithRegex() {
+    List<String> excludedWords = new ArrayList<>();
+    excludedWords.add("the");
+    excludedWords.add("a");
+    excludedWords.add("on");
+    excludedWords.add("off");
+
+    assertEquals(9, StringUtil.countUniqueWordsWithRegex("Humpy-Dumpy sat on a wall. Humpy-Dumpy had a great fall ",
+        excludedWords).getTotalCount());
+    assertEquals(7, StringUtil.countUniqueWordsWithRegex("Humpy-Dumpy sat on a wall. Humpy-Dumpy had a great fall ",
+        excludedWords).getUniqueCount());
+
+  }
 }
